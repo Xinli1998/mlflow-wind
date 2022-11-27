@@ -7,7 +7,7 @@ import numpy as np
 mlflow.set_tracking_uri("http://localhost:5000/")
 
 # TODO: Set the experiment name
-mlflow.set_experiment("xinl - MLFLOW experiment")
+mlflow.set_experiment("xinl")
 
 # Import some of the sklearn modules you are likely to use.
 from sklearn.pipeline import Pipeline
