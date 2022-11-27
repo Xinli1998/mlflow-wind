@@ -9,4 +9,4 @@ entry_points:
       max_iter: {type: int, default: 10000}
       degree: {type: int, default: 4}
       number_of_splits: {type: int, default: 5}
-    command: "untitled.py {alpha}{max_iter}{degree}{number_of_splits}"
+    command: "python untitled.py {alpha}{max_iter}{degree}{number_of_splits}"
