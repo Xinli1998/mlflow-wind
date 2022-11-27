@@ -1,4 +1,4 @@
-name: poly-rnn
+name: xinl
 channels:
 - conda-forge
 dependencies:
