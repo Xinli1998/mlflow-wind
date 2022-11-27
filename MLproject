@@ -1,4 +1,4 @@
-name: poly-rnn
+name: xinl
 
 conda_env: conda.yaml
 
