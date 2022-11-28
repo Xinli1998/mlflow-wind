@@ -123,7 +123,11 @@ def workflow(alpha, max_iter, degree, number_of_splits):
                 mlflow.log_metric(f"mean_{name}", mean_score)
         mlflow.log_metric(f"mean_accuracy",np.mean(acc))
 
-        mlflow.sklearn.log_model(pipeline, "models")
+#         mlflow.sklearn.log_model(pipeline, "models")
+        mlflow.sklearn.log_model(
+        sk_model=pipeline,
+        artifact_path="model"
+    )
 #     tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 #     # Model registry does not work with file store
 #     if tracking_url_type_store != "file":
