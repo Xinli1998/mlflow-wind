@@ -34,10 +34,10 @@ from sklearn.neural_network import MLPRegressor
 # number_of_splits = int(sys.argv[4]) if len(sys.argv) > 4 else 5
 
 @click.command()
-@click.option("alpha", default=0.1, type=float)
-@click.option("max_iter", default=10000, type=int)
-@click.option("degree", default=4, type=int)
-@click.option("number_of_splits", default=5, type=int)
+@click.option("--alpha", default=0.1, type=float)
+@click.option("--max_iter", default=10000, type=int)
+@click.option("--degree", default=4, type=int)
+@click.option("--number_of_splits", default=5, type=int)
 
 # Start a run
 # TODO: Set a descriptive name. This is optional, but makes it easier to keep track of your runs.
