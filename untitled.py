@@ -2,6 +2,7 @@ import pandas as pd
 import mlflow
 import numpy as np
 import sys
+import click
 
 ## NOTE: Optionally, you can use the public tracking server.  Do not use it for data you cannot afford to lose. See note in assignment text. If you leave this line as a comment, mlflow will save the runs to your local filesystem.
 
@@ -31,6 +32,12 @@ from sklearn.neural_network import MLPRegressor
 # print(sys.argv,len(sys.argv))
 # degree = int(sys.argv[3]) if len(sys.argv) > 3 else 4
 # number_of_splits = int(sys.argv[4]) if len(sys.argv) > 4 else 5
+
+@click.command()
+@click.option("alpha", default=0.1, type=float)
+@click.option("max_iter", default=10000, type=int)
+@click.option("degree", default=4, type=int)
+@click.option("number_of_splits", default=5, type=int)
 
 # Start a run
 # TODO: Set a descriptive name. This is optional, but makes it easier to keep track of your runs.
