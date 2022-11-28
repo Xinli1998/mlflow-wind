@@ -25,10 +25,7 @@ from matplotlib import pyplot as plt
 from urllib.parse import urlparse
 from sklearn.neural_network import MLPRegressor
 
-alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.1
-# l1_ratio = 0.5
-max_iter = int(sys.argv[2]) if len(sys.argv) > 2 else 10000
-degree = int(sys.argv[3]) if len(sys.argv) > 3 else 4
+
 # Start a run
 # TODO: Set a descriptive name. This is optional, but makes it easier to keep track of your runs.
 with mlflow.start_run():
@@ -74,6 +71,10 @@ with mlflow.start_run():
 
     #TODO: Log your parameters. What parameters are important to log?
     #HINT: You can get access to the transformers in your pipeline using `pipeline.steps`
+    alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.1
+    # l1_ratio = 0.5
+    max_iter = int(sys.argv[2]) if len(sys.argv) > 2 else 10000
+    degree = int(sys.argv[3]) if len(sys.argv) > 3 else 4
 #     mlflow.log_param("alpha", alpha)
     #     mlflow.log_param("l1_ratio", l1_ratio)
     mlflow.log_param("max_iter" , max_iter)
