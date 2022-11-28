@@ -6,7 +6,7 @@ import click
 
 ## NOTE: Optionally, you can use the public tracking server.  Do not use it for data you cannot afford to lose. See note in assignment text. If you leave this line as a comment, mlflow will save the runs to your local filesystem.
 
-mlflow.set_tracking_uri("http://localhost:5000/")
+mlflow.set_tracking_uri("http://20.234.48.157:5000/")
 
 # TODO: Set the experiment name
 mlflow.set_experiment("xinl")
@@ -26,16 +26,16 @@ from matplotlib import pyplot as plt
 from urllib.parse import urlparse
 from sklearn.neural_network import MLPRegressor
 
-alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.1
-# l1_ratio = 0.5
-max_iter = int(sys.argv[2]) if len(sys.argv) > 2 else 10000
-print(sys.argv,len(sys.argv))
-degree = int(sys.argv[3]) if len(sys.argv) > 3 else 4
-number_of_splits = int(sys.argv[4]) if len(sys.argv) > 4 else 5
-# alpha = 0.1
-# max_iter = 10000
-# degree = 4
-# number_of_splits = 5
+# alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.1
+# # l1_ratio = 0.5
+# max_iter = int(sys.argv[2]) if len(sys.argv) > 2 else 10000
+# print(sys.argv,len(sys.argv))
+# degree = int(sys.argv[3]) if len(sys.argv) > 3 else 4
+# number_of_splits = int(sys.argv[4]) if len(sys.argv) > 4 else 5
+alpha = 0.1
+max_iter = 10000
+degree = 4
+number_of_splits = 5
 
 # @click.command()
 # @click.option("--alpha", default=0.1, type=float)
