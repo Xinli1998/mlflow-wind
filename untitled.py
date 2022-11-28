@@ -80,6 +80,7 @@ with mlflow.start_run():
 
 #     mlflow.log_param("alpha", alpha)
     #     mlflow.log_param("l1_ratio", l1_ratio)
+    print(max_iter)
     mlflow.log_param("max_iter" , max_iter)
     mlflow.log_param("degree", degree)
     mlflow.log_param("number_of_splits", number_of_splits)
