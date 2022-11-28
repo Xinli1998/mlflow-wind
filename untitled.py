@@ -26,7 +26,8 @@ from urllib.parse import urlparse
 from sklearn.neural_network import MLPRegressor
 
 alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.1
-print(sys.argv,float(sys.argv[0]),float(sys.argv[1]))
+print(sys.argv,sys.argv[0],sys.argv[1])
+print(alpha)
 # l1_ratio = 0.5
 max_iter = 10000
 degree = 4
