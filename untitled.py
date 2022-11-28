@@ -34,7 +34,7 @@ number_of_splits = int(sys.argv[4]) if len(sys.argv) > 4 else 5
 
 # Start a run
 # TODO: Set a descriptive name. This is optional, but makes it easier to keep track of your runs.
-with mlflow.start_run():
+with mlflow.start_run(run_name='mlflow-wind'):
     # TODO: Insert path to dataset
     df = pd.read_json("dataset.json", orient="split")
 
