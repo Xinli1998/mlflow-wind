@@ -26,11 +26,9 @@ from urllib.parse import urlparse
 from sklearn.neural_network import MLPRegressor
 
 alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.1
-print(sys.argv,sys.argv[0],sys.argv[1])
-print(alpha)
 # l1_ratio = 0.5
-max_iter = 10000
-degree = 4
+max_iter = int(sys.argv[2]) if len(sys.argv) > 2 else 10000
+degree = int(sys.argv[3]) if len(sys.argv) > 3 else 4
 # Start a run
 # TODO: Set a descriptive name. This is optional, but makes it easier to keep track of your runs.
 with mlflow.start_run():
@@ -72,7 +70,7 @@ with mlflow.start_run():
     X = df[["Speed","Direction"]]
     y = df["Total"]
 
-    number_of_splits = 5
+    number_of_splits = int(sys.argv[4]) if len(sys.argv) > 4 else 5
 
     #TODO: Log your parameters. What parameters are important to log?
     #HINT: You can get access to the transformers in your pipeline using `pipeline.steps`
