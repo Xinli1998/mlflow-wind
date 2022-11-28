@@ -28,7 +28,7 @@ from sklearn.neural_network import MLPRegressor
 alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.1
 # l1_ratio = 0.5
 max_iter = int(sys.argv[2]) if len(sys.argv) > 2 else 10000
-print(max_iter)
+print(sys.argv)
 degree = int(sys.argv[3]) if len(sys.argv) > 3 else 4
 number_of_splits = int(sys.argv[4]) if len(sys.argv) > 4 else 5
 
@@ -81,7 +81,6 @@ with mlflow.start_run():
 
 #     mlflow.log_param("alpha", alpha)
     #     mlflow.log_param("l1_ratio", l1_ratio)
-    print(max_iter)
     mlflow.log_param("max_iter" , max_iter)
     mlflow.log_param("degree", degree)
     mlflow.log_param("number_of_splits", number_of_splits)
