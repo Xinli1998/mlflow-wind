@@ -24,7 +24,7 @@ from matplotlib import pyplot as plt
 from urllib.parse import urlparse
 from sklearn.neural_network import MLPRegressor
 
-# alpha = 0.1
+alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.1
 # l1_ratio = 0.5
 max_iter = 10000
 degree = 4
