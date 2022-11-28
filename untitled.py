@@ -30,7 +30,7 @@ max_iter = 10000
 degree = 4
 # Start a run
 # TODO: Set a descriptive name. This is optional, but makes it easier to keep track of your runs.
-with mlflow.start_run(run_name="poly-rnn"):
+with mlflow.start_run():
     # TODO: Insert path to dataset
     df = pd.read_json("dataset.json", orient="split")
 
