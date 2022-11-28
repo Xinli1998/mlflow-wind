@@ -25,6 +25,11 @@ from matplotlib import pyplot as plt
 from urllib.parse import urlparse
 from sklearn.neural_network import MLPRegressor
 
+alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.1
+# l1_ratio = 0.5
+max_iter = int(sys.argv[2]) if len(sys.argv) > 2 else 10000
+degree = int(sys.argv[3]) if len(sys.argv) > 3 else 4
+number_of_splits = int(sys.argv[4]) if len(sys.argv) > 4 else 5
 
 # Start a run
 # TODO: Set a descriptive name. This is optional, but makes it easier to keep track of your runs.
@@ -48,10 +53,7 @@ with mlflow.start_run():
     #         ('elastic_model', ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)),  
 
     #     ])
-    alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.1
-    # l1_ratio = 0.5
-    max_iter = int(sys.argv[2]) if len(sys.argv) > 2 else 10000
-    degree = int(sys.argv[3]) if len(sys.argv) > 3 else 4
+
     pipeline = Pipeline([
         # Here you can add your preproccesing transformers
         # And you can add your model as the final step
@@ -71,7 +73,7 @@ with mlflow.start_run():
     X = df[["Speed","Direction"]]
     y = df["Total"]
 
-    number_of_splits = int(sys.argv[4]) if len(sys.argv) > 4 else 5
+    
 
     #TODO: Log your parameters. What parameters are important to log?
     #HINT: You can get access to the transformers in your pipeline using `pipeline.steps`
