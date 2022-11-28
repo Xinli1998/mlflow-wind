@@ -142,4 +142,5 @@ if __name__ == '__main__':
     @click.option("--max_iter", default=10000, type=int)
     @click.option("--degree", default=4, type=int)
     @click.option("--number_of_splits", default=5, type=int)
+    print(alpha, max_iter, degree, number_of_splits)
     workflow(alpha, max_iter,degree,number_of_splits)
