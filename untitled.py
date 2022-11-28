@@ -48,6 +48,10 @@ with mlflow.start_run():
     #         ('elastic_model', ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)),  
 
     #     ])
+    alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.1
+    # l1_ratio = 0.5
+    max_iter = int(sys.argv[2]) if len(sys.argv) > 2 else 10000
+    degree = int(sys.argv[3]) if len(sys.argv) > 3 else 4
     pipeline = Pipeline([
         # Here you can add your preproccesing transformers
         # And you can add your model as the final step
@@ -71,10 +75,7 @@ with mlflow.start_run():
 
     #TODO: Log your parameters. What parameters are important to log?
     #HINT: You can get access to the transformers in your pipeline using `pipeline.steps`
-    alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.1
-    # l1_ratio = 0.5
-    max_iter = int(sys.argv[2]) if len(sys.argv) > 2 else 10000
-    degree = int(sys.argv[3]) if len(sys.argv) > 3 else 4
+
 #     mlflow.log_param("alpha", alpha)
     #     mlflow.log_param("l1_ratio", l1_ratio)
     mlflow.log_param("max_iter" , max_iter)
