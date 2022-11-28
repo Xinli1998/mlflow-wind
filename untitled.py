@@ -43,7 +43,7 @@ from sklearn.neural_network import MLPRegressor
 # TODO: Set a descriptive name. This is optional, but makes it easier to keep track of your runs.
 def workflow(alpha, max_iter, degree, number_of_splits):
 
-    with mlflow.start_run(run_name='mlflow-wind'):
+#     with mlflow.start_run(run_name='mlflow-wind'):
         # TODO: Insert path to dataset
         df = pd.read_json("dataset.json", orient="split")
 
