@@ -78,7 +78,7 @@ with mlflow.start_run():
 
     #TODO: Log your parameters. What parameters are important to log?
     #HINT: You can get access to the transformers in your pipeline using `pipeline.steps`
-
+    print(alpha, max_iter, degree, number_of_splits)
 #     mlflow.log_param("alpha", alpha)
     #     mlflow.log_param("l1_ratio", l1_ratio)
 #     mlflow.log_param("max_iter" , max_iter)
