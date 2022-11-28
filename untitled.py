@@ -9,7 +9,7 @@ import click
 # mlflow.set_tracking_uri("http://localhost:5000/")
 
 # TODO: Set the experiment name
-mlflow.set_experiment("xinl")
+# mlflow.set_experiment("xinl")
 
 # Import some of the sklearn modules you are likely to use.
 from sklearn.pipeline import Pipeline
@@ -42,6 +42,7 @@ from sklearn.neural_network import MLPRegressor
 # Start a run
 # TODO: Set a descriptive name. This is optional, but makes it easier to keep track of your runs.
 def workflow(alpha, max_iter, degree, number_of_splits):
+    mlflow.set_experiment("xinl")
     with mlflow.start_run(run_name='mlflow-wind'):
         # TODO: Insert path to dataset
         df = pd.read_json("dataset.json", orient="split")
