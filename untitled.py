@@ -46,7 +46,7 @@ def workflow(alpha, max_iter, degree, number_of_splits):
     client = mlflow.tracking.MlflowClient()
     run = client.create_run(experiment.experiment_id)
 
-    with mlflow.start_run(run_name='mlflow-wind'):
+    with mlflow.start_run(run_id = run.info.run_id):
         # TODO: Insert path to dataset
         df = pd.read_json("dataset.json", orient="split")
 
