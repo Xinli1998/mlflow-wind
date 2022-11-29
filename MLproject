@@ -6,7 +6,8 @@ entry_points:
   main:
     parameters:
       alpha: {type: float, default: 0.1}
-      max_iter: {type: int, default: 10000}
+      max_iter: {type: int, default: 1000}
       degree: {type: int, default: 4}
       number_of_splits: {type: int, default: 5}
-    command: "python new.py --alpha {alpha} --max_iter {max_iter} --degree {degree} --number_of_splits {number_of_splits}"
+      learning_rate_init: {type: float, default: 0.01}
+    command: "python new.py --alpha {alpha} --max_iter {max_iter} --degree {degree} --number_of_splits {number_of_splits} --learning_rate_init {learning_rate_init}"
