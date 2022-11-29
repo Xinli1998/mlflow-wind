@@ -42,15 +42,17 @@ from sklearn.neural_network import MLPRegressor
 @click.option("--max_iter", default=10000, type=int)
 @click.option("--degree", default=4, type=int)
 @click.option("--number_of_splits", default=5, type=int)
+@click.option("--learning_rate_init", default=0.01, type=float)
 
 # # Start a run
 # # TODO: Set a descriptive name. This is optional, but makes it easier to keep track of your runs.
-def workflow(alpha, max_iter, degree, number_of_splits):
+def workflow(alpha, max_iter, degree, number_of_splits,learning_rate_init):
     experiment = mlflow.get_experiment_by_name("xinl")
     client = mlflow.tracking.MlflowClient()
     run = client.create_run(experiment.experiment_id)
 
     with mlflow.start_run(run_id = run.info.run_id):
+        
         # TODO: Insert path to dataset
         df = pd.read_json("dataset.json", orient="split")
 
@@ -76,8 +78,7 @@ def workflow(alpha, max_iter, degree, number_of_splits):
             # And you can add your model as the final step
               ('transformer', splitter ),
                     ('poly_features', PolynomialFeatures (degree=degree, include_bias=False)),
-            ('rnn_model', MLPRegressor(max_iter = max_iter,random_state=1, alpha=alpha )),  
-
+            ('rnn_model', MLPRegressor(alpha=alpha,learning_rate_init = learning_rate_init, max_iter = max_iter,random_state=1 )),
         ])
 
         # TODO: Currently the only metric is MAE. You should add more. What other metrics could you use? Why?
@@ -94,12 +95,13 @@ def workflow(alpha, max_iter, degree, number_of_splits):
 
         #TODO: Log your parameters. What parameters are important to log?
         #HINT: You can get access to the transformers in your pipeline using `pipeline.steps`
-        print(alpha, max_iter, degree, number_of_splits)
+        print("alpha , max_iter , degree , number_of_splits , learnin_rate_init:")
+        print(alpha,max_iter,degree,number_of_splits,learning_rate_init)
         mlflow.log_param("alpha", alpha)
-        #             mlflow.log_param("l1_ratio", l1_ratio)
         mlflow.log_param("max_iter" , max_iter)
         mlflow.log_param("degree", degree)
         mlflow.log_param("number_of_splits", number_of_splits)
+        mlflow.log_param("learning_rate_init", learning_rate_init)
 
         acc = []
         for train, test in TimeSeriesSplit(number_of_splits).split(X,y):
@@ -109,11 +111,11 @@ def workflow(alpha, max_iter, degree, number_of_splits):
             acc.append(pipeline.score(X.iloc[train],y.iloc[train]))
 
 
-            plt.figure(figsize=(8, 4.5))
-            plt.plot(truth.index, truth.values, label="Truth")
-            plt.plot(truth.index, predictions, label="Predictions")
-            plt.xticks(fontproperties = 'Times New Roman', size = 10,rotation=50)
-            plt.show()
+#             plt.figure(figsize=(8, 4.5))
+#             plt.plot(truth.index, truth.values, label="Truth")
+#             plt.plot(truth.index, predictions, label="Predictions")
+#             plt.xticks(fontproperties = 'Times New Roman', size = 10,rotation=50)
+#             plt.show()
 
             # Calculate and save the metrics for this fold
             for name, func, scores in metrics:
@@ -128,6 +130,7 @@ def workflow(alpha, max_iter, degree, number_of_splits):
                 mean_score = sum(scores)/number_of_splits
                 print(mean_score)
                 mlflow.log_metric(f"mean_{name}", mean_score)
+        print(np.mean(acc))
         mlflow.log_metric(f"mean_accuracy",np.mean(acc))
 
         #         mlflow.sklearn.log_model(pipeline, "models")
@@ -135,6 +138,7 @@ def workflow(alpha, max_iter, degree, number_of_splits):
         sk_model=pipeline,
         artifact_path="model"
         )
+    return run.info.run_id
 #     tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 #     # Model registry does not work with file store
 #     if tracking_url_type_store != "file":
