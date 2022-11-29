@@ -134,10 +134,11 @@ def workflow(alpha, max_iter, degree, number_of_splits,learning_rate_init):
         mlflow.log_metric(f"mean_accuracy",np.mean(acc))
 
         #         mlflow.sklearn.log_model(pipeline, "models")
-        mlflow.sklearn.log_model(
-        sk_model=pipeline,
-        artifact_path="model"
-        )
+        mlflow.sklearn.save_model(pipeline,'model')
+#         mlflow.sklearn.log_model(
+#         sk_model=pipeline,
+#         artifact_path="model"
+#         )
     return run.info.run_id
 #     tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 #     # Model registry does not work with file store
