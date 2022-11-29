@@ -10,4 +10,4 @@ entry_points:
       degree: {type: int, default: 4}
       number_of_splits: {type: int, default: 5}
       learning_rate_init: {type: float, default: 0.01}
-    command: "python new.py --alpha {alpha} --max_iter {max_iter} --degree {degree} --number_of_splits {number_of_splits} --learning_rate_init {learning_rate_init}"
+    command: "python untitled.py --alpha {alpha} --max_iter {max_iter} --degree {degree} --number_of_splits {number_of_splits} --learning_rate_init {learning_rate_init}"
