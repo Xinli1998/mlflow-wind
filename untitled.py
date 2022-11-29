@@ -133,8 +133,9 @@ def workflow(alpha, max_iter, degree, number_of_splits,learning_rate_init):
         print(np.mean(acc))
         mlflow.log_metric(f"mean_accuracy",np.mean(acc))
 
-        #         mlflow.sklearn.log_model(pipeline, "models")
-        mlflow.sklearn.save_model(pipeline,'model')
+        mlflow.sklearn.log_model(pipeline, "models")
+#         mlflow.pyfunc.save_model
+#         mlflow.sklearn.save_model(pipeline,'model')
 #         mlflow.sklearn.log_model(
 #         sk_model=pipeline,
 #         artifact_path="model"
