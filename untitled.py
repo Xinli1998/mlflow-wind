@@ -6,8 +6,8 @@ import click
 
 ## NOTE: Optionally, you can use the public tracking server.  Do not use it for data you cannot afford to lose. See note in assignment text. If you leave this line as a comment, mlflow will save the runs to your local filesystem.
 
-mlflow.set_tracking_uri("http://localhost:5000/")
-
+# mlflow.set_tracking_uri("http://localhost:5000/")
+mlflow.set_tracking_uri("http://training.itu.dk:5000/")
 # TODO: Set the experiment name
 mlflow.set_experiment("xinl")
 
